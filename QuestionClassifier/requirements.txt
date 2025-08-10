@@ -1,0 +1,11 @@
+transformers
+datasets
+pandas
+scikit-learn
+torch
+accelerate
+streamlit
+langdetect
+deep_translator
+re
+ollama

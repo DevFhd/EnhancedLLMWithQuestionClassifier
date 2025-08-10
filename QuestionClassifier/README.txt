@@ -1,85 +1,65 @@
-# **Multi-Level Question Classification & Answer Generation**
+Multi-Level Question Classification & Answer Generation
+This project implements a multi-level question classification system using HuggingFace Transformers (DistilBERT) for classification, alongside the Ollama Phi model for answer generation. It supports training, evaluation, and deployment with an optional web interface.
 
-This project implements a **multi-level question classification system** using **HuggingFace Transformers (DistilBERT)** for classification and **Ollama Phi model** for answer generation. It supports training, evaluation, and deployment with optional web interface.
+Features
+Multi-level question classification with fine-tuned DistilBERT models.
 
----
+Answer generation powered by Ollama's Phi model.
 
-## ✅ Features
-- **Multi-level classification** using fine-tuned DistilBERT.
-- **Answer generation** using Ollama's Phi model.
-- **Custom dataset support** for flexible training.
-- **Colab-friendly training** for resource-heavy operations.
-- Includes an **experimental web interface** (under development).
+Custom dataset support for flexible training.
 
----
+Colab-friendly training scripts to leverage GPU resources.
 
-## 📦 Project Contents
-- **Training Script**
-  - Suggested to run on **Google Colab with T4 GPU** for better performance.
-  - Includes dataset loading and model fine-tuning logic.
-- **Running Script**
-  - Loads trained models (provided as `.zip` or generated after training).
-  - contains simple streamlit UI
-  - Supports prediction and Q&A pipeline.
-- **Web Interface (in progress)**
-  - Simple front-end for user interaction.
-- **Important:** You **must edit file paths** in the scripts according to your local project structure.
+Experimental web interface (Streamlit) under active development.
 
----
+Project Structure
+File / Folder	Description
+train.py	Script to fine-tune DistilBERT models
+app.py	Streamlit application for classification & Q&A
+models/	Folder containing trained model checkpoints
+requirements.txt	Python dependencies
 
-## 🚀 Getting Started
-
-### 1. Install Dependencies
-Install all required Python packages:
-```bash
+Getting Started
+Step 1: Install Dependencies
+Install the required Python packages:
 pip install -r requirements.txt
-2. Training the Models
-Run the training script to fine-tune the models:
+Step 2: Train the Models
+Train the DistilBERT classification models:
 
-Open train.py on Google Colab.
+Open train.py in Google Colab (recommended with T4 GPU for performance).
 
 Upload your dataset file (e.g., Question_Classification_Dataset.csv).
 
-Execute:
-
+Run the training script:
 python train.py
 Models will be saved to the specified directory (e.g., models/model_cat0, models/model_cat1, etc.).
 
-3. Running the Prediction Pipeline
-Unzip the trained models if they are provided as .zip files.
+Step 3: Run the Prediction Pipeline
+Unzip trained models if provided as .zip files.
 
-Edit the paths in the script to point to your models, for example:
-
+Edit model paths in app.py to point to your local models:
 tokenizer_cat, model_cat = load_model("models/model_cat0")
-Then run:
-
-python app.py
-4. Enable Answer Generation (Ollama Phi Model)
-To enable the Q&A feature:
+Launch the Streamlit app:
+streamlit run app.py
+Step 4: Enable Answer Generation (Ollama Phi Model)
+To use the Q&A feature powered by Ollama Phi:
 
 Install Ollama from https://ollama.com.
 
 Pull the Phi model:
-
 ollama pull phi
-Start Ollama service and make sure it's running before executing the pipeline.
+Start the Ollama service and ensure it is running before running the Streamlit app.
 
-⚠ Important Notes
-Edit all paths to match your local file arrangement.
-
-The web interface is still in development; paths may require adjustment.
-
-Ollama is required for answer generation.
-
-✅ Example Output
+Example Output
 Input:
-
 Who discovered gravity?
+
 Output:
 
 Category0: 0 (HUMAN)
 Category1: (ind)
 Answer: Isaac Newton discovered gravity in the 17th century.
-
 Author
 Developed by Fahad Alhajji as an open-source NLP & AI project.
+
+Note: Paths in scripts must be updated to match your local file structure. The web interface is under development and may require path adjustments.
